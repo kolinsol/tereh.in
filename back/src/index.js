@@ -16,13 +16,10 @@ app.use(cors())
 app.get('/', (req, res) => res.send('Hello!'))
 
 app.get('/posts', (req, res) => {
-  res.send(
-    [{
-      id: 1,
-      title: "Hello World!",
-      description: "Hi there! How are you?"
-    }]
-  )
+  PostApi.getAll()
+    .then((messages) => {
+      res.send(messages)
+    })
 })
 
 app.post('/post', (req, res) => {
