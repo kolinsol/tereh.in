@@ -5,6 +5,6 @@ bluebird.promisifyAll(redis)
 
 const client = redis.createClient()
 
-client.select(1, redis.print)
+client.select(1, () => console.log('DB connected...'))
 
 module.exports = client
